@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin} from "react-icons/fa";
 import { SiDeviantart, SiArtstation, SiInstagram, SiTiktok } from "react-icons/si";
 import BubblesBackground from "./components/BubbleBackground.jsx";
 import profilePic from "./assets/jdd.png";
-
+import Works from "./components/Works.jsx";
 
 const socials = [
   { name: "GitHub", url: "https://github.com/your-username", icon: <FaGithub /> },
@@ -13,6 +13,8 @@ const socials = [
   { name: "Instagram", url: "https://www.instagram.com/your-username", icon: <SiInstagram /> },
   { name: "TikTok", url: "https://www.tiktok.com/@your-username", icon: <SiTiktok /> },
 ];
+
+
 
 
 function App() {
@@ -49,7 +51,13 @@ function App() {
             <img src={profilePic} alt="About me" />
           </div>
           <p className="about-me-text">
-            I'm a web and game developer with a passion for creating interactive and engaging experiences. I enjoy working with modern web technologies and game engines to bring ideas to life.
+            I'm John Dale V. Sagayno, an upcoming fresh graduate from Cavite State University – Silang Campus, 
+            currently completing my degree with a passion for building clean, functional web and game experiences. 
+            My focus is front-end development and game development, where I enjoy turning ideas into interactive, 
+            user-friendly interfaces and engaging gameplay using tools like React, JavaScript, and game engines. Beyond code, 
+            I'm also a digital artist, creating illustrations and pixel art in my free time. This blend of technical skill and 
+            creative expression shapes how I approach every project with attention to both function and visual detail. I'm excited to 
+            start my professional journey and bring this mix of logic and creativity to real-world development work.
           </p>
         </div>
       </section>
@@ -59,10 +67,7 @@ function App() {
         
       </section>
 
-      <section id="works" className="works">
-        <h2 className="section-title"><span>Works</span></h2>
-        
-      </section>
+      <Works />
 
       <section id="contact" className="contact">
         <h2 className="section-title"><span>Get in touch</span></h2>
