@@ -1,49 +1,76 @@
 import { useState } from "react";
+import { FaGithub, FaLinkedin} from "react-icons/fa";
+import { SiDeviantart, SiArtstation, SiInstagram, SiTiktok } from "react-icons/si";
+import BubblesBackground from "./components/BubbleBackground.jsx";
+import profilePic from "./assets/jdd.png";
 
-const skills = [
-  "HTML", "CSS", "JavaScript", "React", "Vite", "Git", "Tailwind", "Node.js"
-];
 
 const socials = [
-  { name: "GitHub", url: "https://github.com/your-username", icon: "🐙" },
-  { name: "LinkedIn", url: "https://linkedin.com/in/your-username", icon: "in" },
-  { name: "Email", url: "mailto:you@example.com", icon: "✉" },
+  { name: "GitHub", url: "https://github.com/your-username", icon: <FaGithub /> },
+  { name: "LinkedIn", url: "https://linkedin.com/in/your-username", icon: <FaLinkedin /> },
+  { name: "DeviantArt", url: "https://www.deviantart.com/your-username", icon: <SiDeviantart /> },
+  { name: "ArtStation", url: "https://www.artstation.com/your-username", icon: <SiArtstation /> },
+  { name: "Instagram", url: "https://www.instagram.com/your-username", icon: <SiInstagram /> },
+  { name: "TikTok", url: "https://www.tiktok.com/@your-username", icon: <SiTiktok /> },
 ];
 
-const projects = [
-  {
-    title: "Project One",
-    description: "Short description of what this project does and what you built it with.",
-    link: "#",
-  },
-  {
-    title: "Project Two",
-    description: "Short description of what this project does and what you built it with.",
-    link: "#",
-  },
-  {
-    title: "Project Three",
-    description: "Short description of what this project does and what you built it with.",
-    link: "#",
-  },
-];
 
 function App() {
   return (
     <div className="app">
-      <section id="home" className="hero">
-        <p className="hero-eyebrow">Hi, I'm</p>
-        <h1 className="hero-name">John Dale V. Sagayno</h1>
-        <h2 className="hero-title">Web and Game Developer</h2>
-        <p className="hero-description">
+      <BubblesBackground />
+      <section id="home" className="intro">
+        <div className="intro-text">
+        <p className="intro-first_line">HELLO, I'M</p>
+        <h1 className="user-name">John Dale V. Sagayno</h1>
+        <h2 className="intro-title">Web and Game Developer</h2>
+        <p className="intro-description">
           I build clean, responsive websites and web apps.
           Passionate about crafting simple, functional user experiences.
         </p>
-        <div className="hero-buttons">
-          <a href="#projects" className="btn btn-primary">View my work</a>
-          <a href="#contact" className="btn btn-secondary">Contact me</a>
+
+        <div className="intro-buttons">
+          <a href="/JD REAL RESUME.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            View Resume
+          </a>
+          <a href="#aboutme" className="btn btn-secondary">About Me</a>
         </div>
-        <div className="hero-socials">
+      </div>
+
+        <div className="intro-image">
+          <img src={profilePic} alt="John Dale V. Sagayno" />
+        </div>
+      </section>
+
+      <section id="aboutme" className="about-me">
+        <h2 className="section-title"><span>About Me</span></h2>
+        <div className="about-me-content">
+          <div className="about-me-image">
+            <img src={profilePic} alt="About me" />
+          </div>
+          <p className="about-me-text">
+            I'm a web and game developer with a passion for creating interactive and engaging experiences. I enjoy working with modern web technologies and game engines to bring ideas to life.
+          </p>
+        </div>
+      </section>
+
+      <section id="skills" className="skills">
+        <h2 className="section-title"><span>Skills</span></h2>
+        
+      </section>
+
+      <section id="works" className="works">
+        <h2 className="section-title"><span>Works</span></h2>
+        
+      </section>
+
+      <section id="contact" className="contact">
+        <h2 className="section-title"><span>Get in touch</span></h2>
+        <p className="contact-text">
+          Want to work together or just say hi? Reach out through any of these.
+        </p>
+        <div className="contact-socials">
+          <div className="hero-socials">
           {socials.map((s) => (
             <a
               key={s.name}
@@ -57,46 +84,11 @@ function App() {
             </a>
           ))}
         </div>
-      </section>
-
-      <section id="skills" className="skills">
-        <h2 className="section-title">Skills</h2>
-        <div className="skills-grid">
-          {skills.map((skill) => (
-            <span key={skill} className="skill-badge">{skill}</span>
-          ))}
-        </div>
-      </section>
-
-      <section id="projects" className="projects">
-        <h2 className="section-title">Projects</h2>
-        <div className="projects-grid">
-          {projects.map((project) => (
-            <div key={project.title} className="project-card">
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <a href={project.link} className="project-link">View project →</a>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="contact" className="contact">
-        <h2 className="section-title">Get in touch</h2>
-        <p className="contact-text">
-          Want to work together or just say hi? Reach out through any of these.
-        </p>
-        <div className="contact-socials">
-          {socials.map((s) => (
-            <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="contact-link">
-              {s.name}
-            </a>
-          ))}
         </div>
       </section>
 
       <footer className="footer">
-        <p>© {new Date().getFullYear()} Your Name. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Jeideru. All rights reserved.</p>
       </footer>
     </div>
   );
