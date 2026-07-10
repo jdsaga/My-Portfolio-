@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { FaGithub, FaLinkedin} from "react-icons/fa";
 import { SiDeviantart, SiArtstation, SiInstagram, SiTiktok } from "react-icons/si";
 import BubblesBackground from "./components/BubbleBackground.jsx";
 import profilePic from "./assets/jdd.png";
 import Works from "./components/Works.jsx";
+import TypingText from "./components/TypingText.jsx";
+
 
 const socials = [
   { name: "GitHub", url: "https://github.com/your-username", icon: <FaGithub /> },
@@ -18,13 +20,23 @@ const socials = [
 
 
 function App() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="app">
       <BubblesBackground />
       <section id="home" className="intro">
         <div className="intro-text">
         <p className="intro-first_line">HELLO, I'M</p>
-        <h1 className="user-name">John Dale V. Sagayno</h1>
+        <TypingText
+          text="Front-End & Game Dev"
+          secondText="Digital Artist"
+          thirdText="John Dale V. Sagayno"
+          speed={60}
+          pause={1000}
+          cursorDuration={2000}
+        />
         <h2 className="intro-title">Web and Game Developer</h2>
         <p className="intro-description">
           I build clean, responsive websites and web apps.

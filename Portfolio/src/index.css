@@ -237,6 +237,15 @@ section {
   color: #0f1115;
 }
 
+.cursor-blink {
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 /* Section shared */
 .section-title {
   font-size: 2rem;
@@ -333,6 +342,7 @@ section {
   overflow: hidden;
   border: 1px solid #2a2a2a;
   transition: transform 0.2s ease;
+  cursor: pointer;  
 }
 
 .work-card:hover {
@@ -354,7 +364,7 @@ section {
 }
 
 .work-image:hover::after{
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.397);
 }
 
 .work-image img {
@@ -457,6 +467,7 @@ section {
   object-fit: contain;
   border-radius: 8px;
   animation: zoomIn 0.25s ease;
+ 
 }
 .zoom-angle-label {
   margin-top: 12px;
@@ -529,10 +540,6 @@ section {
   to { transform: scale(1); opacity: 1; }
 }
 
-.work-card {
-  cursor: zoom-in;
-}
-
 /* Responsive: fewer columns on smaller screens */
 @media (max-width: 900px) {
   .works-grid {
@@ -544,7 +551,7 @@ section {
   .works-grid {
     grid-template-columns: 1fr;
   }
-} 
+}  
 
 /* Contact */
 .contact {

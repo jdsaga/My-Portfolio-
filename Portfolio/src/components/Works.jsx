@@ -5,6 +5,7 @@ import Pagination from "@mui/material/Pagination";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import CloseIcon from "@mui/icons-material/Close";
+import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
 
 const categories = ["PROGRAMS", "GAMES", "ARTWORKS", "ANIMATIONS", "3D MODEL"];
 
@@ -87,6 +88,26 @@ function Works() {
                   alt={work.title}
                 />
               )}
+              <IconButton
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openWork(index);
+                }}
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  zIndex: 5,
+                  opacity: 0,
+                  transition: "opacity 0.2s ease",
+                  ".work-image:hover &": {
+                    opacity: 1,
+                  },
+                }}
+              >
+                <ZoomOutMapIcon sx={{ color: "#ffffff", fontSize: 28 }} />
+              </IconButton>
             </div>
             <div className="work-footer">
               <span className="work-title">{work.title}</span>

@@ -25,6 +25,31 @@ import angel2 from "../assets/3D_Models/Spiderman_Vs_Venom/Angle 2.png";
 import angel3 from "../assets/3D_Models/Spiderman_Vs_Venom/Angle 3.png";
 import angel4 from "../assets/3D_Models/Spiderman_Vs_Venom/Angle 4.png";
 import angel5 from "../assets/3D_Models/Spiderman_Vs_Venom/Angle 5.png";
+
+
+//---GAMES---//
+
+    // //--CROOKED--//
+    // import C1 from "../assets/Games/Project 1.png";
+    // import C2 from "../assets/Games/Project 2.png";
+    // import C3 from "../assets/Games/Project 3.png";
+    // import C4 from "../assets/Games/Project 4.png";
+    // import C5 from "../assets/Games/Project 5.png";
+
+    // //--FRAGMENTED--//
+    // import F1 from "../assets/Games/Fragmented/Fragmented 1.png";
+    // import F2 from "../assets/Games/Fragmented/Fragmented 2.png";
+    // import F3 from "../assets/Games/Fragmented/Fragmented 3.png";
+    // import F4 from "../assets/Games/Fragmented/Fragmented 4.png";
+    // import F5 from "../assets/Games/Fragmented/Fragmented 5.png";
+
+//---PROGRAMS---//
+
+  //--NARRALYTICS--//
+  //--JnC BikeShop--//
+  //--Human Resources--//
+  //--JAR BUS--//
+
 // ================= PROJECTS DATA =================
 
 export const projects = [
@@ -177,6 +202,8 @@ export const projects = [
     tags: ["Animation","Adobe Photoshop", "Cartoon-Style"],
     featured: false,
   },
+
+  // ---------- 3D Model ----------
 
   {
   id: 5,
