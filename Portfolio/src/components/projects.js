@@ -29,26 +29,34 @@ import angel5 from "../assets/3D_Models/Spiderman_Vs_Venom/Angle 5.png";
 
 //---GAMES---//
 
-    // //--CROOKED--//
-    // import C1 from "../assets/Games/Project 1.png";
-    // import C2 from "../assets/Games/Project 2.png";
-    // import C3 from "../assets/Games/Project 3.png";
-    // import C4 from "../assets/Games/Project 4.png";
-    // import C5 from "../assets/Games/Project 5.png";
+    //--CROOKED--//
+    import CROOKED from "../assets/Games/Crooked/C1.png";
 
-    // //--FRAGMENTED--//
-    // import F1 from "../assets/Games/Fragmented/Fragmented 1.png";
-    // import F2 from "../assets/Games/Fragmented/Fragmented 2.png";
-    // import F3 from "../assets/Games/Fragmented/Fragmented 3.png";
-    // import F4 from "../assets/Games/Fragmented/Fragmented 4.png";
-    // import F5 from "../assets/Games/Fragmented/Fragmented 5.png";
+
+    //--FRAGMENTED--//
+    import FRAGMENTED from "../assets/Games/Project Zero/F1.jpg";
+
 
 //---PROGRAMS---//
 
-  //--NARRALYTICS--//
-  //--JnC BikeShop--//
-  //--Human Resources--//
-  //--JAR BUS--//
+  // --NARRALYTICS--//
+            import J1 from "../assets/Programs/Jnc Bikeshop/1.png";
+            import J2 from "../assets/Programs/Jnc Bikeshop/2.png";
+            import J3 from "../assets/Programs/Jnc Bikeshop/3.png";
+            import J4 from "../assets/Programs/Jnc Bikeshop/4.png";
+            import J5 from "../assets/Programs/Jnc Bikeshop/5.png";
+  // --JnC BikeShop--//
+            import N1 from "../assets/Programs/Narralytics/1.png";
+            import N2 from "../assets/Programs/Narralytics/2.png";
+            import N3 from "../assets/Programs/Narralytics/3.png";
+            import N4 from "../assets/Programs/Narralytics/4.png";
+            import N5 from "../assets/Programs/Narralytics/5.png";
+  // --Human Resources--//
+            import H1 from "../assets/Programs/Human Resources/1.png";
+            import H2 from "../assets/Programs/Human Resources/2.png";
+            import H3 from "../assets/Programs/Human Resources/3.png";
+            import H4 from "../assets/Programs/Human Resources/4.png";
+            import H5 from "../assets/Programs/Human Resources/5.png";
 
 // ================= PROJECTS DATA =================
 
@@ -180,7 +188,7 @@ export const projects = [
 
   // ---------- Animations ----------
   {
-    id: 4,
+    id: 12,
     title: "Night Animation",
     subtitle: "Short Animation",
     description: "A short animated clip.",
@@ -192,7 +200,7 @@ export const projects = [
   },
 
    {
-    id: 5,
+    id: 13,
     title: "Cartoon Style Animation",
     subtitle: "Short Animation",
     description: "A short animated clip.",
@@ -206,7 +214,7 @@ export const projects = [
   // ---------- 3D Model ----------
 
   {
-  id: 5,
+  id: 14,
   title: "SpiderMan Vs. Venom",
   subtitle: "3D Character Model",
   description: "A stylized 3D character model, sculpted and textured for a game project.",
@@ -221,5 +229,81 @@ export const projects = [
   ],
   tags: ["Blender", "3D Modeling", "Texturing"],
   featured: false,
+},// ---------- Games ----------
+{
+  id: 15,
+  title: "Crooked",
+  subtitle: "2D Top-Down",
+  description: "Crooked Game is 2D Top-Down Game, where about farmer named JD, his goal is finding his five loosen chickens in the park after getting accident while driving a truck in the road.",
+  type: "games",
+  typeLabel: "GAME",
+  image: { src: CROOKED, caption: "Crooked" },
+  tags: ["GODOT", "Top-Down", "2D"],
+  itchLink: "https://jeideru.itch.io/crooked",
+  featured: false,
 },
-];
+{
+  id: 16,
+  title: "Project Zero Fragmented",
+  subtitle: "3D First-Person Shooter",
+  description: "Project Zero: Fragmented is a 3D, Doom-style first-person shooter set entirely within one massive, machine-infested building. Zero was created by a professor, but just as he awakened for the first time, he found himself alone the professor had passed away five years earlier, and in that time, Dr. Victor seized control of the building, filling it with his machine minions. Now Zero must fight through Victor's army and defeat him once and for all, to save the world and protect humanity.",
+  type: "games",
+  typeLabel: "GAME",
+  image: { src: FRAGMENTED, caption: "Project Zero Fragmented" },
+  tags: ["GODOT", "First-Person Shooter", "3D"],
+  itchLink: "https://jeideru.itch.io/project-zero-fragmented",
+  featured: false,
+},
+// PROGRAMS
+{
+  id: 17,
+  title: "JnC BikeShop",
+  subtitle: "3D Character Model",
+  description: "A stylized 3D character model, sculpted and textured for a game project.",
+  type: "programs",
+  typeLabel: "Website",
+  images: [
+    { src: J1},
+    { src: J2},
+    { src: J3},
+    { src: J4},
+    { src: J5},
+  ],
+  tags: ["Blender", "3D Modeling", "Texturing"],
+  featured: false,
+},
+{
+  id: 18,
+  title: "Reed Elsevier",
+  subtitle: "Application",
+  description: "A stylized 3D character model, sculpted and textured for a game project.",
+  type: "programs",
+  typeLabel: "Application",
+  images: [
+    { src: H1},
+    { src: H2},
+    { src: H3},
+    { src: H4},
+    { src: H5},
+  ],
+  tags: ["Blender", "3D Modeling", "Texturing"],
+  featured: false,
+},
+{
+  id: 19,
+  title: "Narralytics",
+  subtitle: "3D Character Model",
+  description: "A stylized 3D character model, sculpted and textured for a game project.",
+  type: "programs",
+  typeLabel: "Website",
+  images: [
+    { src: N1},
+    { src: N2},
+    { src: N3},
+    { src: N4},
+    { src: N5},
+  ],
+  tags: ["Blender", "3D Modeling", "Texturing"],
+  featured: false,
+},
+];  

@@ -6,6 +6,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import CloseIcon from "@mui/icons-material/Close";
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 
 const categories = ["PROGRAMS", "GAMES", "ARTWORKS", "ANIMATIONS", "3D MODEL"];
 
@@ -22,6 +23,7 @@ function Works() {
   const hasMultipleAngles = zoomedWork?.images && zoomedWork.images.length > 1;
 
   const openWork = (index) => {
+    if (category === "GAMES") return; // games don't open the zoom overlay
     setZoomedIndex(index);
     setAngleIndex(0);
   };
@@ -78,7 +80,11 @@ function Works() {
 
       <div className="works-grid">
         {filteredWorks.map((work, index) => (
-          <div key={work.id} className="work-card" onClick={() => openWork(index)}>
+          <div
+            key={work.id}
+            className={`work-card ${category === "GAMES" ? "game-card" : ""}`}
+            onClick={() => openWork(index)}
+          >
             <div className="work-image">
               {work.videoSrc ? (
                 <video src={work.videoSrc} muted />
@@ -88,31 +94,64 @@ function Works() {
                   alt={work.title}
                 />
               )}
-              <IconButton
-                onClick={(e) => {
-                  e.stopPropagation();
-                  openWork(index);
-                }}
-                sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  zIndex: 5,
-                  opacity: 0,
-                  transition: "opacity 0.2s ease",
-                  ".work-image:hover &": {
-                    opacity: 1,
-                  },
-                }}
-              >
-                <ZoomOutMapIcon sx={{ color: "#ffffff", fontSize: 28 }} />
-              </IconButton>
+
+              {/* Only non-game cards get the zoom hover icon */}
+              {category !== "GAMES" && (
+                <IconButton
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openWork(index);
+                  }}
+                  sx={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    zIndex: 5,
+                    opacity: 0,
+                    transition: "opacity 0.2s ease",
+                    ".work-image:hover &": { opacity: 1 },
+                  }}
+                >
+                  <ZoomOutMapIcon sx={{ color: "#ffffff", fontSize: 28 }} />
+                </IconButton>
+              )}
             </div>
-            <div className="work-footer">
-              <span className="work-title">{work.title}</span>
-              <span className="work-category">{work.typeLabel}</span>
-            </div>
+
+            {category === "GAMES" ? (
+              <div className="game-info">
+                <div className="work-footer">
+                  <span className="work-title">{work.title}</span>
+                  <span className="work-category">{work.typeLabel}</span>
+                </div>
+                <p className="game-description">{work.description}</p>
+                <div className="game-footer-row">
+                  <a
+                    href={work.itchLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="play-btn"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <SportsEsportsIcon sx={{ fontSize: 18, marginRight: "6px" }} />
+                    Play on itch.io
+                  </a>
+
+                  {work.tags && (
+                    <div className="game-tags">
+                      {work.tags.map((tag) => (
+                        <span key={tag} className="game-tag">{tag}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <div className="work-footer">
+                <span className="work-title">{work.title}</span>
+                <span className="work-category">{work.typeLabel}</span>
+              </div>
+            )}
           </div>
         ))}
       </div>

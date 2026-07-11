@@ -528,6 +528,68 @@ section {
 
 .zoom-arrow-right {
   right: 30px;
+} 
+
+.game-card {
+  cursor: default; /* not clickable-to-zoom like other cards */
+  display: flex;
+  flex-direction: column;
+}
+
+.game-info {
+  display: flex;
+  flex-direction: column;
+  padding: 0 18px 18px;
+}
+
+.game-description {
+  color: #b0b3b8;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 8px 0 14px;
+}
+
+.play-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  padding: 0.55rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: #75caff;
+  color: #0f1115;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+.play-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.game-footer-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.game-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.game-tag {
+  padding: 4px 10px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.75rem;
+  color: #eee;
+  white-space: nowrap;
 }
 
 @keyframes fadeIn {
