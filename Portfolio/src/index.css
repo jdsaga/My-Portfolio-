@@ -15,6 +15,11 @@ body {
   scroll-behavior: smooth;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 .app {
   min-height: 100vh;
 }
@@ -434,6 +439,15 @@ section {
 }
 
 @media (max-width: 768px){
+  .skills-grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .skill-category {
+    padding: 16px 20px;
+  }
+
   .tab-btn {
   padding: 20px 15px;
   border: none;
