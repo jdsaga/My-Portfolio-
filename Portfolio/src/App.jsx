@@ -1,11 +1,12 @@
-import { useState, useEffect} from "react";
-import { FaGithub, FaLinkedin} from "react-icons/fa";
-import { SiDeviantart, SiArtstation, SiInstagram, SiTiktok } from "react-icons/si";
+import { useState, useEffect } from "react";
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import { SiDeviantart, SiArtstation, SiInstagram, SiTiktok, SiItchdotio } from "react-icons/si";
 import BubblesBackground from "./components/BubbleBackground.jsx";
 import profilePic from "./assets/jdd.png";
 import Works from "./components/Works.jsx";
 import TypingText from "./components/TypingText.jsx";
-
+import emailjs from "@emailjs/browser";
+import { MdChevronRight } from "react-icons/md";
 
 const socials = [
   { name: "GitHub", url: "https://github.com/your-username", icon: <FaGithub /> },
@@ -27,7 +28,7 @@ const skillCategories = [
   },
   {
     name: "Game Development",
-    skills: ["Godot", "Unity", "2D Platformer", "Top-Down", "Game Design", "Level Degin", "Unity", , "Character Design", "3D Game Design"],
+    skills: ["Godot", "Unity", "2D Platformer", "Top-Down", "Game Design", "Level Degin", "Unity", "Character Design", "3D Game Design"],
   },
   {
     name: "AI Tools",
@@ -37,14 +38,56 @@ const skillCategories = [
     name: "Database",
     skills: ["MySQL", "MongoDB"],
   }
-  
+
 ];
 
+const contactRows = [ 
+  { name: "GitHub", value: "https://github.com/jdsaga", href: "https://github.com/jdsaga", icon: <FaGithub /> },
+  { name: "LinkedIn", value: "linkedin.com/in/your-username", href: "https://linkedin.com/in/your-username", icon: <FaLinkedin /> },
+  { name: "DeviantArt", value: "deviantart.com/your-username", href: "https://www.deviantart.com/your-username", icon: <SiDeviantart /> },
+  { name: "ArtStation", value: "artstation.com/your-username", href: "https://www.artstation.com/your-username", icon: <SiArtstation /> },
+  { name: "Instagram", value: "https://www.instagram.com/jeideru_art/", href: "https://www.instagram.com/jeideru_art/", icon: <SiInstagram /> },
+  { name: "TikTok", value: "https://www.tiktok.com/@jeideru_arts", href: "https://www.tiktok.com/@jeideru_arts", icon: <SiTiktok /> },
+];
 
 function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // ---- Contact form state ----
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [status, setStatus] = useState(null); // null | "sending" | "success" | "error"
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    emailjs
+      .send(
+        "service_4siau6d",
+        "template_eu7zrzg",
+        formData,
+        "i5JYwRd9azLMAx-WX"
+      )
+      .then(() => {
+        setStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      })
+      .catch(() => {
+        setStatus("error");
+      });
+  };
+
   return (
     <div className="app">
       <BubblesBackground />
@@ -118,25 +161,86 @@ function App() {
       <Works />
 
       <section id="contact" className="contact">
-        <h2 className="section-title"><span>Get in touch</span></h2>
-        <p className="contact-text">
-          Want to work together or just say hi? Reach out through any of these.
-        </p>
-        <div className="contact-socials">
-          <div className="hero-socials">
-          {socials.map((s) => (
-            <a
-              key={s.name}
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon"
-              aria-label={s.name}
-            >
-              {s.icon}
-            </a>
-          ))}
-        </div>
+        <h2 className="section-title"><span>Contact Me</span></h2>
+
+        <div className="contact-grid">
+          <div className="contact-card">
+            <div className="contact-card-image">
+              <img src={profilePic} alt="John Dale V. Sagayno" />
+            </div>
+            <h3 className="contact-card-name">John Dale V. Sagayno</h3>
+            <p className="contact-card-role">Web and Game Developer</p>
+            <p className="contact-card-bio">
+              I'm always open to freelance work, collabs, or just a friendly hello.
+              Reach out anytime.
+            </p>
+            <div className="contact-plain-info">
+  <p><strong>Email:</strong> jd.sagai30@gmail.com</p>
+  <p><strong>Phone:</strong> +63 975 228 1847</p>
+</div>
+
+            <div className="contact-info-list">
+              {contactRows
+                .filter((row) => row.name !== "Email" && row.name !== "Phone")
+                .map((row) => (
+                  <a
+                    key={row.name}
+                    href={row.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-row"
+                  >
+                    <span className="contact-row-icon">{row.icon}</span>
+                    <span className="contact-row-text">
+                      <span className="contact-row-label">{row.name}</span>
+                      <span className="contact-row-value">{row.value}</span>
+                    </span>
+                    <span className="contact-row-arrow"><MdChevronRight /></span>
+                  </a>
+                ))}
+            </div>
+          </div>
+
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Full Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="text"
+              name="subject"
+              placeholder="Subject"
+              value={formData.subject}
+              onChange={handleChange}
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Enter Your Message"
+              rows="6"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
+            <button type="submit" disabled={status === "sending"}>
+              {status === "sending" ? "Sending..." : "Send Message"}
+            </button>
+
+            {status === "success" && <p className="form-status success">Message sent!</p>}
+            {status === "error" && <p className="form-status error">Something went wrong. Try again.</p>}
+          </form>
         </div>
       </section>
 
