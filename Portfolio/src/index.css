@@ -220,6 +220,22 @@ section {
   border: 3px solid #3bf2c1;
 }
 
+.intro-role {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  margin-bottom: 1rem;
+}
+
+.typing-word {
+  color: #3bf27e;
+  font-weight: 700;
+}
+
+.cursor-blink {
+  animation: blink 0.8s step-end infinite;
+  color: #3bf27e;
+}
 @media (max-width: 768px) {
 
   .intro-image {
@@ -242,12 +258,6 @@ section {
   margin-bottom: 0.25rem;
 }
 
-.intro-title {
-  font-size: 1.8rem;
-  color: #9aa0a6;
-  font-weight: 500;
-  margin-bottom: 1.25rem;
-}
 
 .intro-description {
   max-width: 540px;
@@ -310,9 +320,6 @@ section {
   color: #0f1115;
 }
 
-.cursor-blink {
-  animation: blink 0.8s step-end infinite;
-}
 
 @keyframes blink {
   from, to { opacity: 1; }

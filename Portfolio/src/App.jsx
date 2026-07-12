@@ -94,15 +94,16 @@ function App() {
       <section id="home" className="intro">
         <div className="intro-text">
         <p className="intro-first_line">HELLO, I'M</p>
-        <TypingText
-          text="Front-End & Game Dev"
-          secondText="Digital Artist"
-          thirdText="John Dale V. Sagayno"
-          speed={60}
-          pause={1000}
-          cursorDuration={2000}
-        />
-        <h2 className="intro-title">Web and Game Developer</h2>
+        <h1 className="user-name">John Dale V. Sagayno</h1>
+        <p className="intro-role">
+          I am into{" "}
+          <TypingText
+            words={["Front-End Development", "Game Development", "Digital Art"]}
+            speed={60}
+            deleteSpeed={35}
+            pause={1200}
+          />
+        </p>
         <p className="intro-description">
           I build clean, responsive websites and web apps.
           Passionate about crafting simple, functional user experiences.
