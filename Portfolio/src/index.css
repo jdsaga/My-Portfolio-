@@ -80,6 +80,7 @@ section {
   backdrop-filter: blur(6px);
 }
 
+
 .logo {
   font-size: 1.3rem;
   font-weight: 700;
@@ -107,7 +108,8 @@ section {
   color: #00ffae;
 }
 
-.menu-toggle {
+/* THIS IS FOR MENU ICON TO INVISIBLE IN LAPTOP/COMPUTER VERSION */
+.menu-toggle { 
   display: none;
   background: none;
   border: none;
@@ -116,6 +118,64 @@ section {
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .navbar-side-line {
+    display: none;
+  }
+
+  .navbar {
+    width: 100%;
+    justify-content: flex-end;
+    position: relative;
+    margin-top: 20px;
+  }
+
+  .navbar.scrolled {
+    background: transparent;
+    backdrop-filter: none;
+  }
+
+  .menu-toggle {
+    display: block;   /* <-- ADDED: makes the icon visible on mobile */
+    position: fixed;
+    top: 1.2rem;
+    right: 1.2rem;
+    z-index: 200;
+    padding: 0.5rem;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    border-radius: 4px;
+  }
+
+  .menu-toggle:hover {
+    background-color: #5e605f;
+    transform: scale(1.05);
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 4.5rem;
+    right: 1.2rem;
+    left: auto;
+    width: 200px;
+    background: #14161b;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    display: none;
+    z-index: 199;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+}
 
 /* Intro */
 .intro {
@@ -153,6 +213,14 @@ section {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #f2af3b;
+}
+
+@media (max-width: 768px) {
+
+  .intro-image {
+    display: none;
+  }
+
 }
 
 .intro-first_line {
@@ -277,6 +345,18 @@ section {
   border: 2px solid #f2a93b;
 }
 
+@media (max-width: 768px) {
+  .about-me-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-me-image img {
+    margin: 0 auto;
+  }
+}
+
 .about-me-text {
   flex: 1;
   min-width: 280px;
@@ -353,6 +433,19 @@ section {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+@media (max-width: 768px){
+  .tab-btn {
+  padding: 20px 15px;
+  border: none;
+  border-radius: 5px;
+  border: 2px solid #3aa985;
+  background-color: #03041c;
+  color: white;
+  font-size: 11px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+}
 .tab-btn:hover {
   background-color: #12153b;
 }
@@ -523,7 +616,7 @@ section {
   margin: 0;
 }
 /* Stack vertically on smaller screens */
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   .zoom-content {
     flex-direction: column;
     max-height: 90vh;
@@ -704,25 +797,6 @@ section {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #14161b;
-    flex-direction: column;
-    padding: 1rem 2rem;
-    display: none;
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
   .hero-name {
     font-size: 2.5rem;
   }
