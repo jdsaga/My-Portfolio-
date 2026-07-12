@@ -16,7 +16,29 @@ const socials = [
   { name: "TikTok", url: "https://www.tiktok.com/@your-username", icon: <SiTiktok /> },
 ];
 
-
+const skillCategories = [
+  {
+    name: "Front End",
+    skills: ["HTML", "CSS", "JavaScript", "React"],
+  },
+  {
+    name: "Graphics & Design",
+    skills: ["Krita", "Figma", "Aseprite", "Canvas", "UI/UX Design", "Icon Design", "Illustration", "Pixel Art", "Blender"],
+  },
+  {
+    name: "Game Development",
+    skills: ["Godot", "Unity", "2D Platformer", "Top-Down", "Game Design", "Level Degin", "Unity", , "Character Design", "3D Game Design"],
+  },
+  {
+    name: "AI Tools",
+    skills: ["ChatGPT", "Claude", "Deepseek", "NoteGPT", "Gemini"],
+  },
+  {
+    name: "Database",
+    skills: ["MySQL", "MongoDB"],
+  }
+  
+];
 
 
 function App() {
@@ -63,20 +85,34 @@ function App() {
             <img src={profilePic} alt="About me" />
           </div>
           <p className="about-me-text">
-            I'm John Dale V. Sagayno, an upcoming fresh graduate from Cavite State University – Silang Campus, 
-            currently completing my degree with a passion for building clean, functional web and game experiences. 
-            My focus is front-end development and game development, where I enjoy turning ideas into interactive, 
-            user-friendly interfaces and engaging gameplay using tools like React, JavaScript, and game engines. Beyond code, 
-            I'm also a digital artist, creating illustrations and pixel art in my free time. This blend of technical skill and 
-            creative expression shapes how I approach every project with attention to both function and visual detail. I'm excited to 
-            start my professional journey and bring this mix of logic and creativity to real-world development work.
+            I'm John Dale V. Sagayno, a soon-to-be graduate of Cavite State University – Silang Campus, 
+            currently finishing my degree while pursuing my passion for creating clean, functional front-end 
+            and game experiences. I specialize in front-end development and game development, where I enjoy 
+            transforming ideas into interactive, user-friendly interfaces and engaging gameplay using tools 
+            like React, JavaScript, and various game engines. Outside of coding, I'm also a digital artist, 
+            working on illustrations and pixel art in my spare time. This combination of technical ability 
+            and creative expression influences how I approach every project, balancing both functionality 
+            and visual polish. I'm looking forward to starting my professional career and bringing this blend 
+            of logic and creativity into real-world development work.
           </p>
         </div>
       </section>
 
       <section id="skills" className="skills">
         <h2 className="section-title"><span>Skills</span></h2>
-        
+
+        <div className="skills-grid">
+          {skillCategories.map((cat) => (
+            <div key={cat.name} className="skill-category">
+              <h3 className="skill-category-title">{cat.name}</h3>
+              <div className="skill-tags">
+                {cat.skills.map((skill) => (
+                  <span key={skill} className="skill-tag">{skill}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       <Works />

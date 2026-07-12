@@ -215,9 +215,9 @@ export const projects = [
 
   {
   id: 14,
-  title: "SpiderMan Vs. Venom",
-  subtitle: "3D Character Model",
-  description: "A stylized 3D character model, sculpted and textured for a game project.",
+  title: "Spider-Man VS. Venom",
+  subtitle: "Character Model",
+  description: "A stylized 3D character model of Spider-Man and Venom.",
   type: "3d model",
   typeLabel: "Character Model",
   images: [
@@ -258,8 +258,8 @@ export const projects = [
 {
   id: 17,
   title: "JnC BikeShop",
-  subtitle: "3D Character Model",
-  description: "A stylized 3D character model, sculpted and textured for a game project.",
+  subtitle: "Website",
+  description: "This Website is about selling of full set or by parts of bikes.",
   type: "programs",
   typeLabel: "Website",
   images: [
@@ -269,14 +269,14 @@ export const projects = [
     { src: J4},
     { src: J5},
   ],
-  tags: ["Blender", "3D Modeling", "Texturing"],
+  tags: ["HTML", "Visual Studio Code", "CSS"],
   featured: false,
 },
 {
   id: 18,
   title: "Reed Elsevier",
   subtitle: "Application",
-  description: "A stylized 3D character model, sculpted and textured for a game project.",
+  description: "A human resources application for managing human data.",
   type: "programs",
   typeLabel: "Application",
   images: [
@@ -286,14 +286,14 @@ export const projects = [
     { src: H4},
     { src: H5},
   ],
-  tags: ["Blender", "3D Modeling", "Texturing"],
+  tags: ["WPF", "Visual Studio", "C#"],
   featured: false,
 },
 {
   id: 19,
   title: "Narralytics",
-  subtitle: "3D Character Model",
-  description: "A stylized 3D character model, sculpted and textured for a game project.",
+  subtitle: "Website",
+  description: "A Website that can store and analyze narrative journals for Cvsu-Silang.",
   type: "programs",
   typeLabel: "Website",
   images: [
@@ -303,7 +303,7 @@ export const projects = [
     { src: N4},
     { src: N5},
   ],
-  tags: ["Blender", "3D Modeling", "Texturing"],
+  tags: ["React", "MERN STACK", "Visual Studio Code"],
   featured: false,
 },
 ];  

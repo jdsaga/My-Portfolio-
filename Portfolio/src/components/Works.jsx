@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { projects } from "./projects.js";
 import IconButton from "@mui/material/IconButton";
 import Pagination from "@mui/material/Pagination";
@@ -21,6 +21,21 @@ function Works() {
 
   const zoomedWork = zoomedIndex !== null ? filteredWorks[zoomedIndex] : null;
   const hasMultipleAngles = zoomedWork?.images && zoomedWork.images.length > 1;
+
+  // Lock/unlock body scroll based on whether the zoom overlay is open
+  useEffect(() => {
+    if (zoomedWork) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    // cleanup in case component unmounts while zoomed
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [zoomedWork]);
+
 
   const openWork = (index) => {
     if (category === "GAMES") return; // games don't open the zoom overlay
