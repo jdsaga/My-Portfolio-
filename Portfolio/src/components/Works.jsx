@@ -93,6 +93,16 @@ function Works() {
         ))}
       </div>
 
+      <select
+        className="category-select"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      >
+        {categories.map((cat) => (
+          <option key={cat} value={cat}>{cat}</option>
+        ))}
+      </select>
+
       <div className="works-grid">
         {filteredWorks.map((work, index) => (
           <div
