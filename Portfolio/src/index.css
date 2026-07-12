@@ -217,7 +217,7 @@ section {
   height: 460px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #f2af3b;
+  border: 3px solid #3bf2c1;
 }
 
 @media (max-width: 768px) {
@@ -306,7 +306,7 @@ section {
 }
 
 .social-icon:hover {
-  background: #f2a93b;
+  background: #2de3a7;
   color: #0f1115;
 }
 
@@ -347,7 +347,7 @@ section {
   height: 320px;
   object-fit: cover;
   border-radius: 12px;
-  border: 2px solid #f2a93b;
+  border: 2px solid #3bf2c1;
 }
 
 @media (max-width: 768px) {
@@ -505,9 +505,10 @@ section {
   background-color: #1a1a1a;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid #2a2a2a;
+  border: 2px dashed #00ffd0;
   transition: transform 0.2s ease;
   cursor: pointer;  
+  
 }
 
 .work-card:hover {
