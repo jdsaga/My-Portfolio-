@@ -43,17 +43,49 @@ const skillCategories = [
 
 const contactRows = [ 
   { name: "GitHub", value: "https://github.com/jdsaga", href: "https://github.com/jdsaga", icon: <FaGithub /> },
-  { name: "LinkedIn", value: "linkedin.com/in/your-username", href: "https://linkedin.com/in/your-username", icon: <FaLinkedin /> },
-  { name: "DeviantArt", value: "deviantart.com/your-username", href: "https://www.deviantart.com/your-username", icon: <SiDeviantart /> },
-  { name: "ArtStation", value: "artstation.com/your-username", href: "https://www.artstation.com/your-username", icon: <SiArtstation /> },
+  { name: "LinkedIn", value: "https://www.linkedin.com/in/john-dale-sagayno-b0571936b/", href: "https://www.linkedin.com/in/john-dale-sagayno-b0571936b/", icon: <FaLinkedin /> },
+  { name: "DeviantArt", value: "https://www.deviantart.com/jeideru", href: "https://www.deviantart.com/jeideru", icon: <SiDeviantart /> },
+  { name: "ArtStation", value: "https://www.artstation.com/jeideru", href: "https://www.artstation.com/jeideru", icon: <SiArtstation /> },
   { name: "Instagram", value: "https://www.instagram.com/jeideru_art/", href: "https://www.instagram.com/jeideru_art/", icon: <SiInstagram /> },
   { name: "TikTok", value: "https://www.tiktok.com/@jeideru_arts", href: "https://www.tiktok.com/@jeideru_arts", icon: <SiTiktok /> },
 ];
 
 function App() {
+  const [showBackToTop, setShowBackToTop] = useState(false);
+const [isVisible, setIsVisible] = useState(false); // controls DOM presence
+
+useEffect(() => {
+  const handleScroll = () => {
+    const contactSection = document.getElementById("contact");
+    if (!contactSection) return;
+    const rect = contactSection.getBoundingClientRect();
+    setShowBackToTop(rect.top <= window.innerHeight * 0.5);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
+useEffect(() => {
+  if (showBackToTop) {
+    setIsVisible(true); // mount immediately, fade in plays
+  } else if (isVisible) {
+    const timeout = setTimeout(() => setIsVisible(false), 300); // wait for fade-out (300ms = animation duration)
+    return () => clearTimeout(timeout);
+  }
+}, [showBackToTop]);
+
+// 👇 ADD THIS
   useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
     window.scrollTo(0, 0);
   }, []);
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
   // ---- Contact form state ----
   const [formData, setFormData] = useState({
@@ -104,10 +136,10 @@ function App() {
             pause={1200}
           />
         </p>
-        <p className="intro-description">
+        {/* <p className="intro-description">
           I build clean, responsive websites and web apps.
           Passionate about crafting simple, functional user experiences.
-        </p>
+        </p> */}
 
         <div className="intro-buttons">
           <a href="/JD REAL RESUME.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
@@ -170,13 +202,12 @@ function App() {
               <img src={profilePic} alt="John Dale V. Sagayno" />
             </div>
             <h3 className="contact-card-name">John Dale V. Sagayno</h3>
-            <p className="contact-card-role">Web and Game Developer</p>
+            <p className="contact-card-role">Front-End - Game Dev - Digital Artist</p>
             <p className="contact-card-bio">
-              I'm always open to freelance work, collabs, or just a friendly hello.
-              Reach out anytime.
+             I am currently open to new job opportunities and collaborations. I look forward to connecting with you
             </p>
             <div className="contact-plain-info">
-  <p><strong>Email:</strong> jd.sagai30@gmail.com</p>
+  <p><strong>Email:</strong> johndalesagayno2003@gmail.com</p>
   <p><strong>Phone:</strong> +63 975 228 1847</p>
 </div>
 
@@ -246,8 +277,17 @@ function App() {
       </section>
 
       <footer className="footer">
-        <p>© {new Date().getFullYear()} Jeideru. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} John Dale Sagayno. All rights reserved.</p>
       </footer>
+
+      {isVisible && (
+        <button
+          className={`back-to-top ${showBackToTop ? "fade-in" : "fade-out"}`}
+          onClick={scrollToTop}
+        >
+          ↑
+        </button>
+      )}
     </div>
   );
 }

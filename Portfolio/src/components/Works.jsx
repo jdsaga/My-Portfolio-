@@ -7,6 +7,10 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import CloseIcon from "@mui/icons-material/Close";
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const categories = ["PROGRAMS", "GAMES", "ARTWORKS", "ANIMATIONS", "3D MODEL"];
 
@@ -93,15 +97,65 @@ function Works() {
         ))}
       </div>
 
-      <select
-        className="category-select"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
+      <FormControl
+        sx={{
+          display: { xs: "block", md: "none" }, // only show on mobile, like your old .category-select
+          width: "100%",
+          maxWidth: 320,
+          margin: "0 auto",
+        }}
       >
-        {categories.map((cat) => (
-          <option key={cat} value={cat}>{cat}</option>
-        ))}
-      </select>
+        <Select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          IconComponent={KeyboardArrowDownIcon}
+          sx={{
+            backgroundColor: "#03041c",
+            color: "#fff",
+            border: "2px solid #3aa985",
+            borderRadius: "5px",
+            fontSize: "14px",
+            width: "100%", // 👈 ensures it fills the FormControl's max-width properly
+
+            "& .MuiOutlinedInput-notchedOutline": {
+              border: "none",
+            },
+            "& .MuiSvgIcon-root": {
+              color: "#fff",
+              fontSize: "2rem",
+              right: "16px", // 👈 nudges the arrow icon a bit more inward for spacing
+            },
+            "& .MuiSelect-select": {
+              textAlign: "center", // 👈 centers the selected text
+              paddingRight: "48px !important", // 👈 keeps text from overlapping the arrow
+            },
+          }}
+          MenuProps={{
+            PaperProps: {
+              style: {
+                backgroundColor: "#03041c" ,
+                color: "#fff",
+                "& .MuiMenuItem-root": {
+                  justifyContent: "center", // 👈 centers text in the dropdown list too
+                },
+                "& .MuiMenuItem-root:hover": {
+                  backgroundColor: "#ff0000",
+                },
+                "& .Mui-selected": {
+                  backgroundColor: "#75caff !important",
+                  color: "#000",
+                },
+              },
+            },
+          }}
+        >
+          {categories.map((cat) => (
+            <MenuItem key={cat} value={cat}>
+              {cat}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
 
       <div className="works-grid">
         {filteredWorks.map((work, index) => (
