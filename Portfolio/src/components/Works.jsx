@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef } from "react";
 import { projects } from "./projects.js";
 import IconButton from "@mui/material/IconButton";
 import Pagination from "@mui/material/Pagination";
@@ -11,13 +11,19 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import Slide from "@mui/material/Slide";
 
 const categories = ["PROGRAMS", "GAMES", "ARTWORKS", "ANIMATIONS", "3D MODEL"];
+
+const SlideDownTransition = forwardRef(function SlideDownTransition(props, ref) {
+  return <Slide direction="down" ref={ref} {...props} />;
+});
 
 function Works() {
   const [category, setCategory] = useState(categories[0]);
   const [zoomedIndex, setZoomedIndex] = useState(null);
   const [angleIndex, setAngleIndex] = useState(0);
+  const [selectOpen, setSelectOpen] = useState(false);
 
   const filteredWorks = projects.filter(
     (work) => work.type.toUpperCase() === category
@@ -40,6 +46,15 @@ function Works() {
     };
   }, [zoomedWork]);
 
+  // Close the category dropdown automatically if the page scrolls while it's open
+  useEffect(() => {
+    if (!selectOpen) return;
+
+    const handleScroll = () => setSelectOpen(false);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [selectOpen]);
 
   const openWork = (index) => {
     if (category === "GAMES") return; // games don't open the zoom overlay
@@ -106,6 +121,9 @@ function Works() {
         }}
       >
         <Select
+          open={selectOpen}
+          onOpen={() => setSelectOpen(true)}
+          onClose={() => setSelectOpen(false)}
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           IconComponent={KeyboardArrowDownIcon}
@@ -115,7 +133,7 @@ function Works() {
             border: "2px solid #3aa985",
             borderRadius: "5px",
             fontSize: "14px",
-            width: "100%", // 👈 ensures it fills the FormControl's max-width properly
+            width: "100%",
 
             "& .MuiOutlinedInput-notchedOutline": {
               border: "none",
@@ -123,23 +141,39 @@ function Works() {
             "& .MuiSvgIcon-root": {
               color: "#fff",
               fontSize: "2rem",
-              right: "16px", // 👈 nudges the arrow icon a bit more inward for spacing
+              right: "16px",
             },
             "& .MuiSelect-select": {
-              textAlign: "center", // 👈 centers the selected text
-              paddingRight: "48px !important", // 👈 keeps text from overlapping the arrow
+              textAlign: "center",
+              paddingRight: "48px !important",
             },
           }}
           MenuProps={{
+            anchorOrigin: {
+              vertical: "bottom",
+              horizontal: "center",
+            },
+            transformOrigin: {
+              vertical: "top",
+              horizontal: "center",
+            },
+            getContentAnchorEl: null,
+            TransitionComponent: SlideDownTransition,
             PaperProps: {
               style: {
-                backgroundColor: "#03041c" ,
+                backgroundColor: "#03041c",
                 color: "#fff",
+                marginTop: "8px",
+              },
+            },
+            MenuListProps: {
+              sx: {
                 "& .MuiMenuItem-root": {
-                  justifyContent: "center", // 👈 centers text in the dropdown list too
+                  justifyContent: "center",
+                  color: "#fff",
                 },
                 "& .MuiMenuItem-root:hover": {
-                  backgroundColor: "#ff0000",
+                  backgroundColor: "#12153b",
                 },
                 "& .Mui-selected": {
                   backgroundColor: "#75caff !important",
