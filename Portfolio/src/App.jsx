@@ -161,8 +161,8 @@ const scrollToTop = () => {
             <img src={profilePic} alt="About me" />
           </div>
           <p className="about-me-text">
-            I'm John Dale V. Sagayno, a soon-to-be graduate of Cavite State University – Silang Campus, 
-            currently finishing my degree while pursuing my passion for creating clean, functional front-end 
+            I'm John Dale V. Sagayno, a fresh graduate of Cavite State University – Silang Campus, 
+            i'm pursuing my passion for creating clean, functional front-end 
             and game experiences. I specialize in front-end development and game development, where I enjoy 
             transforming ideas into interactive, user-friendly interfaces and engaging gameplay using tools 
             like React, JavaScript, and various game engines. Outside of coding, I'm also a digital artist, 
